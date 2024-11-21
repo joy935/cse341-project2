@@ -1,0 +1,47 @@
+# using POSTMAN to test the API
+
+### LOCAL HOST ### 
+# localhost routes (3030 port) 
+
+# get hello world
+GET http://localhost:3030
+
+# get all books
+GET http://localhost:3030/books
+
+# get book by id
+# for example : The Tainted Cup 
+# id : 673efe63f7dfab09ded11a4d
+GET http://localhost:3030/books/673efe63f7dfab09ded11a4d
+
+# create a new book
+POST http://localhost:3030/books
+{   "title": "Die with Zero",
+    "subtitle": "Getting All You Can from Your Money and Your Life",
+    "isbn": "9780358099765",
+    "author": "Bill Perkins",
+    "publisher": "Houghton Mifflin Harcourt",
+    "publishedDate": "2020-07-28",
+    "genre": "Finance"
+}
+
+# update a book
+# for example : The Tainted Cup, change the subtitle from "Shadow of the Leviathan #1" to "Bitter Brews and Burning Hearts"
+# id : 673efe63f7dfab09ded11a4d
+PUT http://localhost:3030/books/673efe63f7dfab09ded11a4d
+{   "title":"The Tainted Cup",
+    "subtitle":"Shadow of the Leviathan #1",
+    "isbn":"9781984820709",
+    "author":"Robert Jackson Bennett",
+    "publisher":"Del Rey",
+    "publishedDate":"2024-02-06",
+    "genre":"Fantasy"
+}
+
+# delete a book
+# for example : Die with Zero
+# id : 673f1a1b051c72465eac056b
+DELETE http://localhost:3030/books/673f1a1b051c72465eac056b
+
+
+### RENDER.COM ###
