@@ -11,6 +11,10 @@ app.use(express.json());
 const routes = require('./routes');
 app.use('/', routes);
 
+process.on('uncaughtException', (err, origin) => {
+    console.log(process.stderr.fd, `Caught exception: ${err}\n` + `Exception origin: ${origin}`);
+  });
+
 mongodb.initDb((error) => {
     if (error) {
         console.log("Error connecting to database");
