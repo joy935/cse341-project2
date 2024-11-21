@@ -1,3 +1,5 @@
+const { ObjectId } = require('mongodb');
+
 const validator = require('../helpers/validate');
 const saveBook = async (req, res, next) => {
     const validationRule = {
@@ -23,6 +25,22 @@ const saveBook = async (req, res, next) => {
         }
     }).catch( err => console.log(err))
 }
+
+const validateId = async (req, res, next) => {
+    const id = req.params.id;
+    if (!ObjectId.isValid(id)) {
+        res.status(412)
+            .send({
+                success: false,
+                message: 'Invalid Id',
+                data: {}
+            });
+    } else {
+        next();
+    }
+};
+
 module.exports = {
-    saveBook
+    saveBook,
+    validateId
 };

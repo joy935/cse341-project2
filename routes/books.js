@@ -7,15 +7,15 @@ const booksController = require("../controllers/books");
 router.get("/", booksController.getAllBooks);
 
 // to get one book
-router.get("/:id", booksController.getOneBook);
+router.get("/:id", validate.validateId, booksController.getOneBook);
 
 // to add a book
 router.post("/", validate.saveBook, booksController.addBook);
 
 // to update a book
-router.put("/:id", validate.saveBook, booksController.updateBook);
+router.put("/:id", validate.validateId, validate.saveBook, booksController.updateBook);
 
 // to delete a book
-router.delete("/:id", booksController.deleteBook);
+router.delete("/:id", validate.validateId, booksController.deleteBook);
 
 module.exports = router;
