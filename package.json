@@ -1,0 +1,22 @@
+{
+  "name": "cse341-project2",
+  "version": "1.0.0",
+  "description": "cse341 class project 2 winter 2024",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "cse341-project2"
+  },
+  "author": "Veihi Tupai",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
