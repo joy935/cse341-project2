@@ -8,12 +8,13 @@
   "host": "cse341-project2-mszp.onrender.com",
   "basePath": "/",
   "schemes": [
-    "https", "http"
+    "https",
+    "http"
   ],
   "paths": {
     "/": {
       "get": {
-        "description": "",
+        "description": "Hello World endpoint",
         "responses": {
           "200": {
             "description": "OK"
@@ -21,15 +22,31 @@
         }
       }
     },
+    "/api-docs": {
+      "get": {
+        "description": "Fetch the API documentation",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/books/": {
       "get": {
-        "description": "",
+        "description": "Fetch all books",
         "produces": [
           "application/json"
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK, returns a list of books"
           },
           "500": {
             "description": "Internal Server Error"
@@ -37,7 +54,7 @@
         }
       },
       "post": {
-        "description": "",
+        "description": "Add a new book",
         "parameters": [
           {
             "name": "body",
@@ -72,7 +89,7 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "The book was added successfully"
           },
           "412": {
             "description": "Precondition Failed"
@@ -85,7 +102,7 @@
     },
     "/books/{id}": {
       "get": {
-        "description": "",
+        "description": "Fetch one book",
         "produces": [
           "application/json"
         ],
@@ -99,7 +116,13 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK, return one book"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "412": {
+            "description": "Precondition Failed"
           },
           "500": {
             "description": "Internal Server Error"
@@ -107,7 +130,7 @@
         }
       },
       "put": {
-        "description": "",
+        "description": "Update a book",
         "parameters": [
           {
             "name": "id",
@@ -148,7 +171,7 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "The books was updated successfully"
           },
           "412": {
             "description": "Precondition Failed"
@@ -159,7 +182,7 @@
         }
       },
       "delete": {
-        "description": "",
+        "description": "Delete a book",
         "parameters": [
           {
             "name": "id",
@@ -170,7 +193,10 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "The book was deleted successfully"
+          },
+          "412": {
+            "description": "Precondition Failed"
           },
           "500": {
             "description": "Internal Server Error"
