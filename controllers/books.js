@@ -18,6 +18,9 @@ const getOneBook = async (req, res) => {
     // #swagger.tags = ['Books']
     try {
         const bookId = new ObjectId(req.params.id);
+        if (!bookId) {
+            res.status(500).json("Book ID not found.");
+        }
         const result = await mongodb.getDb().db().collection("books").find({ _id: bookId });
         if (!result) {
             res.status(404).json("Book not found.");
