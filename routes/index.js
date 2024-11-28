@@ -10,6 +10,7 @@ router.get("/", (req, res) => {
     });
 
 router.use("/books", require("./books"));
+router.use("/users", require("./users"));
 
 router.get("/login", passport.authenticate("github"), (req, res) => {});
 
