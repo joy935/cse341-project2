@@ -42,10 +42,11 @@ const validateId = async (req, res, next) => {
 
 const saveUser = async (req, res, next) => {
     const validationRule = {
-        "firstName": "required|string",
-        "lastName": "required|string",
+        "firstName": "string",
+        "lastName": "string",
         "email": "required|email",
-        "favoriteBooks": "array"
+        "favoriteBooks": "array",
+        "githubId": "required|string"
     };
 
     await validator(req.body, validationRule, {}, (err, status) => {
