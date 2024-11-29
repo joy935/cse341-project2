@@ -15,8 +15,6 @@
   "GitHubOAuth": {
     "type": "oauth2",
     "flow": "accessCode",
-    "authorizationUrl": "https://github.com/login/oauth/authorize",
-    "tokenUrl": "https://github.com/login/oauth/access_token",
     "description": "Authenticate using GitHub OAuth2. Obtain an access token by logging in through GitHub."
   }
   },
