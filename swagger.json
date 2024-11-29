@@ -215,7 +215,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK, returns a list of users"
           },
           "500": {
             "description": "Internal Server Error"
@@ -259,7 +259,7 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "The user was added successfully"
           },
           "500": {
             "description": "Internal Server Error"
@@ -287,7 +287,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK, return one user"
           },
           "404": {
             "description": "Not Found"
@@ -340,7 +340,7 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "The user was updated successfully"
           },
           "500": {
             "description": "Internal Server Error"
@@ -363,7 +363,7 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "The user was deleted successfully"
           },
           "500": {
             "description": "Internal Server Error"
