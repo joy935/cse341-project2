@@ -5,10 +5,10 @@
     "description": "Simple API to manage books and book lovers",
     "version": "1.0.0"
   },
-  "host": "cse341-project1-2rwd.onrender.com",
+  "host": "https://cse341-project2-mszp.onrender.com",
   "basePath": "/",
   "schemes": [
-    "https"
+    "https", "http"
   ],
   "paths": {
     "/api-docs": {
