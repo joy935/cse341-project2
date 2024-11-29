@@ -42,7 +42,8 @@ const addUser = async (req, res) => {
             lastName: req.body.lastName,
             email: req.body.email,
             favoriteBooks: req.body.favoriteBooks,
-            githubId: req.body.githubId
+            githubId: req.body.githubId,
+            username: req.body.username
         };
         const response = await mongodb.getDb().db().collection("users").insertOne(user);
         if (response.acknowledged) {
@@ -75,7 +76,8 @@ const updateUser = async (req, res) => {
             lastName: req.body.lastName,
             email: req.body.email,
             favoriteBooks: req.body.favoriteBooks,
-            githubId: req.body.githubId
+            githubId: req.body.githubId,
+            username: req.body.username
         };
         const response = await mongodb.getDb().db().collection("users").replaceOne({ _id: userId }, user);
         if (response.modifiedCount > 0) {
