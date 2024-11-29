@@ -37,11 +37,18 @@ const getOneUser = async (req, res) => {
 const addUser = async (req, res) => {
     // #swagger.tags = ['Users']
     try {
+        // only allow the authenticated user to create their own data
+        const loggedInUser = req.session.user;
+        if (!loggedInUser) {
+            return res.status(401).json("You must be logged in to add a user");
+        }
+
         const user = {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             email: req.body.email,
-            favoriteBooks: req.body.favoriteBooks
+            favoriteBooks: req.body.favoriteBooks,
+            githubId: req.body.githubId
         };
         const response = await mongodb.getDb().db().collection("users").insertOne(user);
         if (response.acknowledged) {
@@ -57,15 +64,24 @@ const addUser = async (req, res) => {
 const updateUser = async (req, res) => {
     // #swagger.tags = ['Users']
     try {
+        const loggedInUser = req.session.user;
+        if (!loggedInUser) {
+            return res.status(401).json("You must be logged in to update a user");
+        }
         const userId = new ObjectId(req.params.id);
-        if (!userId) {
-            res.status(500).json("User ID not found.");
+        // if (!userId) {
+        //     res.status(500).json("User ID not found.");
+        // }
+        const existingUser = await mongodb.getDb().db().collection("users").findOne({ _id: userId }); // check if the user exists
+        if (!existingUser || existingUser.githubId !== loggedInUser.githubId) {
+            return res.status(403).json("You are not authorized to update this user");
         }
         const user = {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             email: req.body.email,
-            favoriteBooks: req.body.favoriteBooks
+            favoriteBooks: req.body.favoriteBooks,
+            githubId: req.body.githubId
         };
         const response = await mongodb.getDb().db().collection("users").replaceOne({ _id: userId }, user);
         if (response.modifiedCount > 0) {
