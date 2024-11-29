@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Books API",
-    "description": "Simple API to manage books",
+    "description": "Simple API to manage books and book lovers",
     "version": "1.0.0"
   },
   "host": "localhost:3030",
@@ -11,21 +11,17 @@
     "https",
     "http"
   ],
+  "securityDefinitions": {
+  "GitHubOAuth": {
+    "type": "oauth2",
+    "flow": "accessCode",
+    "authorizationUrl": "https://github.com/login/oauth/authorize",
+    "tokenUrl": "https://github.com/login/oauth/access_token",
+    "description": "Authenticate using GitHub OAuth2. Obtain an access token by logging in through GitHub."
+  }
+  },
   "paths": {
-    "/": {
-      "get": {
-        "tags": [
-          "Hello World"
-        ],
-        "description": "Hello World endpoint",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/login": {
+    "/api-docs": {
       "get": {
         "description": "Fetch the API documentation",
         "responses": {
@@ -35,26 +31,6 @@
           "500": {
             "description": "Internal Server Error"
           },
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/logout": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "responses": {
           "default": {
             "description": ""
           }
@@ -273,6 +249,9 @@
                 },
                 "favoriteBooks": {
                   "example": "any"
+                },
+                "github": {
+                  "example": "any"
                 }
               }
             }
@@ -345,6 +324,9 @@
                   "example": "any"
                 },
                 "favoriteBooks": {
+                  "example": "any"
+                },
+                "github": {
                   "example": "any"
                 }
               }
