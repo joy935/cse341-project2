@@ -3,9 +3,7 @@
 ### LOCAL HOST ### 
 # localhost routes (3030 port) 
 
-# get hello world
-GET http://localhost:3030
-
+## BOOKS COLLECTION ##
 # get all books
 GET http://localhost:3030/books
 
@@ -43,10 +41,41 @@ PUT http://localhost:3030/books/673efe63f7dfab09ded11a4d
 # id : 673efe63f7dfab09ded11a4d
 DELETE http://localhost:3030/books/673efe63f7dfab09ded11a4d
 
+## USERS COLLECTION ##
+# get all users
+GET http://localhost:3030/users
+
+# get user by id
+# for example : Aslan 
+GET http://localhost:3030/users/6748864c8ff3efa1bf8ab318
+
+# create a new user
+# for example, Veihi
+POST http://localhost:3030/users
+{   "firstName": "Veihi",
+    "lastName": "Mszp",
+    "email": "veihim@gmail.com",
+    "favoriteBooks": ["673f1982002928385a8b0734", "673f1982002928385a8b0734"],
+    "githubId": "123456789",
+    "username": "joy935"
+}
+
+# update a user
+# for example : Aslan, change the email from "aslan@narnia.com" to "thelionking@narnia.com"
+PUT http://localhost:3030/users/6748864c8ff3efa1bf8ab318
+{   "firstName": "Aslan",
+    "lastName": "Narnia",
+    "email": "thelionking@narnia.com",
+    "favoriteBooks": null,
+    "githubId": "111111111",
+    "username": "aslan"
+}
+
+# delete a user
+# for example : Aslan
+DELETE http://localhost:3030/users/6748864c8ff3efa1bf8ab318
 
 ### RENDER.COM ###
-# get hello world
-GET https://cse341-project2-mszp.onrender.com
 
 # get all books
 GET https://cse341-project2-mszp.onrender.com/books
@@ -84,3 +113,37 @@ PUT https://cse341-project2-mszp.onrender.com/books/673efe63f7dfab09ded11a4d
 # for example : The Tainted Cup
 # id : 673efe63f7dfab09ded11a4d
 DELETE https://cse341-project2-mszp.onrender.com/books/673efe63f7dfab09ded11a4d
+
+## USERS COLLECTION ##
+# get all users
+GET http://cse341-project2-mszp.onrender.com/users
+
+# get user by id
+# for example : Aslan 
+GET http://cse341-project2-mszp.onrender.com/users/6748864c8ff3efa1bf8ab318
+
+# create a new user
+# for example, Veihi
+POST http://cse341-project2-mszp.onrender.com/users
+{   "firstName": "Veihi",
+    "lastName": "Mszp",
+    "email": "veihim@gmail.com",
+    "favoriteBooks": ["673f1982002928385a8b0734", "673f1982002928385a8b0734"],
+    "githubId": "123456789",
+    "username": "joy935"
+}
+
+# update a user
+# for example : Aslan, change the email from "aslan@narnia.com" to "thelionking@narnia.com"
+PUT http://cse341-project2-mszp.onrender.com/users/6748864c8ff3efa1bf8ab318
+{   "firstName": "Aslan",
+    "lastName": "Narnia",
+    "email": "thelionking@narnia.com",
+    "favoriteBooks": null,
+    "githubId": "111111111",
+    "username": "aslan"
+}
+
+# delete a user
+# for example : Aslan
+DELETE http://localhost:3030/users/6748864c8ff3efa1bf8ab318
