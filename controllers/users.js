@@ -64,9 +64,6 @@ const updateUser = async (req, res) => {
             return res.status(401).json("You must be logged in to update a user");
         }
         const userId = new ObjectId(req.params.id);
-        // if (!userId) {
-        //     res.status(500).json("User ID not found.");
-        // }
         const existingUser = await mongodb.getDb().db().collection("users").findOne({ _id: userId }); // check if the user exists
         if (!existingUser || existingUser.githubId !== loggedInUser.githubId) {
             return res.status(403).json("You are not authorized to update this user");
@@ -94,8 +91,9 @@ const deleteUser = async (req, res) => {
     // #swagger.tags = ['Users']
     try {
         const userId = new ObjectId(req.params.id);
-        if (!userId) {
-            res.status(500).json("User ID not found.");
+        const existingUser = await mongodb.getDb().db().collection("users").findOne({ _id: userId }); // check if the user exists
+        if (!existingUser || existingUser.githubId !== loggedInUser.githubId) {
+            return res.status(403).json("You are not authorized to update this user");
         }
         const response = await mongodb.getDb().db().collection("users").deleteOne({ _id: userId }, true);
         if (response.deletedCount > 0) {
