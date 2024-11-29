@@ -40,6 +40,7 @@
     "/books/": {
       "get": {
         "tags": ["Books"],
+        "summary": "Fetch all books",
         "description": "Fetch all books",
         "produces": [
           "application/json"
@@ -55,6 +56,7 @@
       },
       "post": {
         "tags": ["Books"],
+        "summary": "Add a new book",
         "description": "Add a new book",
         "parameters": [
           {
@@ -104,6 +106,7 @@
     "/books/{id}": {
       "get": {
         "tags": ["Books"],
+        "summary": "Fetch one book",
         "description": "Fetch one book",
         "produces": [
           "application/json"
@@ -133,6 +136,7 @@
       },
       "put": {
         "tags": ["Books"],
+        "summary": "Update a book",
         "description": "Update a book",
         "parameters": [
           {
@@ -186,6 +190,7 @@
       },
       "delete": {
         "tags": ["Books"],
+        "summary": "Delete a book",
         "description": "Delete a book",
         "parameters": [
           {
@@ -213,7 +218,8 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "summary": "Fetch all users",
+        "description": "Fetch all users",
         "produces": [
           "application/json"
         ],
@@ -230,7 +236,8 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "summary": "Add a new user",
+        "description": "Add a new user",
         "parameters": [
           {
             "name": "body",
@@ -272,7 +279,8 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "summary": "Fetch one user",
+        "description": "Fetch one user",
         "produces": [
           "application/json"
         ],
@@ -300,7 +308,8 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "summary": "Update a user",
+        "description": "Update a user",
         "parameters": [
           {
             "name": "id",
@@ -346,7 +355,8 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "summary": "Delete a user",
+        "description": "Delete a user",
         "parameters": [
           {
             "name": "id",
