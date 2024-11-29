@@ -12,7 +12,6 @@ const PORT = process.env.PORT || 3030;
 const app = express();
 
 app 
-    .use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument))
     .use(express.json())
     .use(session({ 
         secret: "secret",
