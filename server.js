@@ -97,15 +97,6 @@ app.get("/", (req, res) => {
     )});
 
 // login with github
-// app.get("/github/callback", passport.authenticate("github", { 
-//     failureRedirect: "/api-docs", session: false }),
-//     (req, res) => {
-//         req.session.user = req.user;
-//         res.redirect("/");
-//     }
-// );
-
-// login with github
 app.get(
     "/github/callback",
     passport.authenticate("github", { failureRedirect: "/api-docs", session: false }),
