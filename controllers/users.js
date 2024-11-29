@@ -37,12 +37,6 @@ const getOneUser = async (req, res) => {
 const addUser = async (req, res) => {
     // #swagger.tags = ['Users']
     try {
-        // only allow the authenticated user to create their own data
-        const loggedInUser = req.session.user;
-        if (!loggedInUser) {
-            return res.status(401).json("You must be logged in to add a user");
-        }
-
         const user = {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
