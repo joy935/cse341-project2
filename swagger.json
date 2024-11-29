@@ -255,9 +255,9 @@
                   "example": "any"
                 },
                 "favoriteBooks": {
-                  "example": "any"
+                  "example": ["any"]
                 },
-                "github": {
+                "githubId": {
                   "example": "any"
                 }
               }
@@ -333,9 +333,9 @@
                   "example": "any"
                 },
                 "favoriteBooks": {
-                  "example": "any"
+                  "example": ["any"]
                 },
-                "github": {
+                "githubId": {
                   "example": "any"
                 }
               }
