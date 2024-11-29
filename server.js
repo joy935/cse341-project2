@@ -38,15 +38,50 @@ app
     .use(cors({ origin: "*" }))
     .use('/', routes);
 
-passport.use(new GitHubStrategy({
-    clientID: process.env.GITHUB_CLIENT_ID,
-    clientSecret: process.env.GITHUB_CLIENT_SECRET,
-    callbackURL: process.env.GITHUB_CALLBACK_URL
-    },
-function(accessToken, refreshToken, profile, done) {
-    return done(null, profile);
-    }
-));
+// passport.use(new GitHubStrategy({
+//     clientID: process.env.GITHUB_CLIENT_ID,
+//     clientSecret: process.env.GITHUB_CLIENT_SECRET,
+//     callbackURL: process.env.GITHUB_CALLBACK_URL
+//     },
+// function(accessToken, refreshToken, profile, done) {
+//     return done(null, profile);
+//     }
+// ));
+
+passport.use(
+    new GitHubStrategy(
+        {
+            clientID: process.env.GITHUB_CLIENT_ID,
+            clientSecret: process.env.GITHUB_CLIENT_SECRET,
+            callbackURL: process.env.GITHUB_CALLBACK_URL,
+        },
+        async (accessToken, refreshToken, profile, done) => {
+            try {
+                // extract user information from the GitHub profile
+                const githubUser = {
+                    githubId: profile.id,
+                    email: profile.emails && profile.emails[0] ? profile.emails[0].value : null,
+                };
+                // connect to the database and check if the user exists
+                const db = mongodb.getDb().db();
+                let user = await db.collection("users").findOne({ githubId: githubUser.githubId });
+                if (!user) {
+                    // if user doesn't exist, create a new user
+                    const response = await db.collection("users").insertOne(githubUser);
+                    if (response.acknowledged) {
+                        user = githubUser; // use the newly created user
+                    } else {
+                        return done(new Error("Failed to create a new user"), null);
+                    }
+                }
+                return done(null, user);
+            } catch (error) {
+                console.error("GitHub authentication error:", error);
+                return done(error, null);
+            }
+        }
+    )
+);
 
 passport.serializeUser(function(user, done) {
     done(null, user);
@@ -58,13 +93,24 @@ passport.deserializeUser(function(obj, done) {
 // check the session 
 app.get("/", (req, res) => { 
     res.send(req.session.user != undefined ? 
-        `Logged in as ${req.session.user.displayName}` : "Logged out"
+        `Logged in as ${req.session.user.username}` : "Logged out"
     )});
 
 // login with github
-app.get("/github/callback", passport.authenticate("github", { 
-    failureRedirect: "/api-docs", session: false }),
+// app.get("/github/callback", passport.authenticate("github", { 
+//     failureRedirect: "/api-docs", session: false }),
+//     (req, res) => {
+//         req.session.user = req.user;
+//         res.redirect("/");
+//     }
+// );
+
+// login with github
+app.get(
+    "/github/callback",
+    passport.authenticate("github", { failureRedirect: "/api-docs", session: false }),
     (req, res) => {
+        // store the user in the session
         req.session.user = req.user;
         res.redirect("/");
     }
