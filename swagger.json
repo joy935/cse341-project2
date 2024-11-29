@@ -11,13 +11,6 @@
     "https",
     "http"
   ],
-  "securityDefinitions": {
-  "GitHubOAuth": {
-    "type": "oauth2",
-    "flow": "accessCode",
-    "description": "Authenticate using GitHub OAuth2. Obtain an access token by logging in through GitHub."
-  }
-  },
   "paths": {
     "/api-docs": {
       "get": {
