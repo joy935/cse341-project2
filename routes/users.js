@@ -11,7 +11,7 @@ router.get("/", usersController.getAllUsers);
 router.get("/:id", usersController.getOneUser);
 
 // to add a user
-router.post("/", isAuthenticated, validate.saveUser, usersController.addUser);
+router.post("/", validate.saveUser, usersController.addUser);
 
 // to update a user
 router.put("/:id", isAuthenticated, validate.saveUser, usersController.updateUser);
