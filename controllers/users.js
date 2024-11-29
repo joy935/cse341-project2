@@ -90,6 +90,10 @@ const updateUser = async (req, res) => {
 const deleteUser = async (req, res) => {
     // #swagger.tags = ['Users']
     try {
+        const loggedInUser = req.session.user;
+        if (!loggedInUser) {
+            return res.status(401).json("You must be logged in to update a user");
+        }
         const userId = new ObjectId(req.params.id);
         const existingUser = await mongodb.getDb().db().collection("users").findOne({ _id: userId }); // check if the user exists
         if (!existingUser || existingUser.githubId !== loggedInUser.githubId) {
