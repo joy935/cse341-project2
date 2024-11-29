@@ -60,6 +60,7 @@ passport.use(
                 const githubUser = {
                     githubId: profile.id,
                     email: profile.emails && profile.emails[0] ? profile.emails[0].value : null,
+                    username: profile.username,
                 };
                 // connect to the database and check if the user exists
                 const db = mongodb.getDb().db();
@@ -90,6 +91,7 @@ passport.deserializeUser(function(obj, done) {
 });
 
 // check the session 
+
 app.get("/", (req, res) => { 
     res.send(req.session.user != undefined ? 
         `Logged in as ${req.session.user.username}` : "Logged out"

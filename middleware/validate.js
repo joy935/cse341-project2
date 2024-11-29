@@ -46,7 +46,8 @@ const saveUser = async (req, res, next) => {
         "lastName": "string",
         "email": "required|email",
         "favoriteBooks": "array",
-        "githubId": "required|string"
+        "githubId": "required|numeric",
+        "username": "required|string"
     };
 
     await validator(req.body, validationRule, {}, (err, status) => {

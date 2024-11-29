@@ -249,6 +249,9 @@
                 },
                 "githubId": {
                   "example": "any"
+                },
+                "username": {
+                  "example": "any"
                 }
               }
             }
@@ -326,6 +329,9 @@
                   "example": ["any"]
                 },
                 "githubId": {
+                  "example": "any"
+                },
+                "username": {
                   "example": "any"
                 }
               }
