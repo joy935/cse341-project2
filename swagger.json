@@ -7,9 +7,7 @@
   },
   "host": "cse341-project2-mszp.onrender.com",
   "basePath": "/",
-  "schemes": [
-    "https", "http"
-  ],
+  "schemes": ["https", "http"],
   "paths": {
     "/api-docs": {
       "get": {
@@ -32,9 +30,7 @@
         "tags": ["Books"],
         "summary": "Fetch all books",
         "description": "Fetch all books",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "OK, returns a list of books"
@@ -98,9 +94,7 @@
         "tags": ["Books"],
         "summary": "Fetch one book",
         "description": "Fetch one book",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "id",
@@ -205,14 +199,10 @@
     },
     "/users/": {
       "get": {
-        "tags": [
-          "Users"
-        ],
+        "tags": ["Users"],
         "summary": "Fetch all users",
         "description": "Fetch all users",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "OK, returns a list of users"
@@ -223,9 +213,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Users"
-        ],
+        "tags": ["Users"],
         "summary": "Add a new user",
         "description": "Add a new user",
         "parameters": [
@@ -269,14 +257,10 @@
     },
     "/users/{id}": {
       "get": {
-        "tags": [
-          "Users"
-        ],
+        "tags": ["Users"],
         "summary": "Fetch one user",
         "description": "Fetch one user",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "id",
@@ -298,9 +282,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Users"
-        ],
+        "tags": ["Users"],
         "summary": "Update a user",
         "description": "Update a user",
         "parameters": [
@@ -348,9 +330,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Users"
-        ],
+        "tags": ["Users"],
         "summary": "Delete a user",
         "description": "Delete a user",
         "parameters": [

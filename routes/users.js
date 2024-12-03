@@ -14,7 +14,12 @@ router.get("/:id", usersController.getOneUser);
 router.post("/", validate.saveUser, usersController.addUser);
 
 // to update a user
-router.put("/:id", isAuthenticated, validate.saveUser, usersController.updateUser);
+router.put(
+  "/:id",
+  isAuthenticated,
+  validate.saveUser,
+  usersController.updateUser
+);
 
 // to delete a user
 router.delete("/:id", isAuthenticated, usersController.deleteUser);

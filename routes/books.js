@@ -14,9 +14,20 @@ router.get("/:id", validate.validateId, booksController.getOneBook);
 router.post("/", isAuthenticated, validate.saveBook, booksController.addBook);
 
 // to update a book
-router.put("/:id", isAuthenticated, validate.validateId, validate.saveBook, booksController.updateBook);
+router.put(
+  "/:id",
+  isAuthenticated,
+  validate.validateId,
+  validate.saveBook,
+  booksController.updateBook
+);
 
 // to delete a book
-router.delete("/:id", isAuthenticated, validate.validateId, booksController.deleteBook);
+router.delete(
+  "/:id",
+  isAuthenticated,
+  validate.validateId,
+  booksController.deleteBook
+);
 
 module.exports = router;
